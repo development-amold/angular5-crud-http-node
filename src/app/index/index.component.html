@@ -11,8 +11,9 @@
       <tr *ngFor="let coin of coins">
           <td>{{ coin.name }}</td>
           <td>{{ coin.price }}</td>
-          <td><a [routerLink]="['/edit', coin._id]" class="btn btn-primary">Edit</a></td>
-          <td><a routerLink="" class="btn btn-danger">Delete</a></td>
+          <td><a [routerLink]="['/edit', coin._id]" class="btn btn-primary">Edit</a>|
+            <a routerLink="" class="btn btn-danger">Delete</a>
+           </td>
       </tr>
   </tbody>
 </table>

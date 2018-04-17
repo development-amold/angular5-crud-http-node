@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CoinService } from '../coin.service';
 import { FormGroup,  FormBuilder,  Validators } from '@angular/forms';
+import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-create',
@@ -8,10 +9,12 @@ import { FormGroup,  FormBuilder,  Validators } from '@angular/forms';
   styleUrls: ['./create.component.css']
 })
 export class CreateComponent implements OnInit {
-  title = "Add Coin";
+  title = "New Coin";
   angForm: FormGroup;
-  constructor(private coinservice: CoinService, private fb: FormBuilder) {
+  constructor(private coinservice: CoinService, private fb: FormBuilder,private titleService: Title) {
     this.createForm();
+    this.titleService.setTitle(this.title);
+    //Title is angulars default service imported in to app.component.ts and using it in all component
    }
   createForm() {
     this.angForm = this.fb.group({
@@ -20,10 +23,9 @@ export class CreateComponent implements OnInit {
    });
   }
   addCoin(name, price) {
-      this.coinservice.addCoin(name, price);
+    this.coinservice.addCoin(name, price);
   }  
   
-
   ngOnInit() {
   }
 

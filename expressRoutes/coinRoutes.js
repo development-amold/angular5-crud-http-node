@@ -4,10 +4,8 @@ var coinRoutes = express.Router();
 
 // Require Item model in our routes module
 var Coin = require('../models/coin');
-console.log("--------------BEFREO EXPRESS ROUTES------");
 // Defined store route
 coinRoutes.route('/add').post(function (req, res) {
- console.log("==============TEST===ADD==COIN ROUTES========");
   var coin = new Coin(req.body);
    coin.save()
     .then(item => {
