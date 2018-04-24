@@ -33,10 +33,6 @@ const express = require('express'),
     console.log('Listening on port ' + port);
     });
 
-    // Create link to Angular build directory
-    var distDir = __dirname + "/dist/";
-    app.use(express.static(distDir));
-
     app.get("/",function(req,res){
         res.send("<h4>MY NODE HOMEPAGE</h4>");
     });
