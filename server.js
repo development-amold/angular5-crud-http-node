@@ -8,19 +8,37 @@ const express = require('express'),
 
     mongoose.Promise = global.Promise;
     mongoose.connect(config.DB).then(
-        () => {console.log('Database is connected') },
-        err => { console.log('Can not connect to the database'+ err)}
+        client => {console.log("Connected to database: "+client.connections[0].name) },
+        err => { console.log('Can not connect to the database: '+ err)}
       );
+
+    // OR---WE CAN WRITE IN THE FOLLOWING WAY USING FUNCTION PROTOTYPE  
+    // mongoose.connect(config.DB,function(err, client){
+    //     if (err)
+    //     {
+    //         console.log('Can not connect to the database'+ err);
+    //     }
+    //     else
+    //     {
+    //         console.log("Connected to database: "+client.db.s.databaseName);
+    //     }
+    // });
 
     const app = express();
     app.use(bodyParser.json());
     app.use(cors());    
+    
     const port = process.env.PORT || 4000;
-
     const server = app.listen(port,function(){
     console.log('Listening on port ' + port);
     });
+
+    // Create link to Angular build directory
+    var distDir = __dirname + "/dist/";
+    app.use(express.static(distDir));
+
     app.get("/",function(req,res){
-        res.send("----MY NODE HOMEPAGE--CHANGES DONE----");
+        res.send("<h4>MY NODE HOMEPAGE</h4>");
     });
     app.use('/coins', coinRoutes);
+
