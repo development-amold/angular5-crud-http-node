@@ -40,4 +40,16 @@ export class CoinService {
             });
   }
 
+  updateCoin(name, price, id) {
+    const uri = 'http://localhost:4000/coins/update/' + id;
+    const obj = {
+      name: name,
+      price: price
+    };
+    this
+      .http
+      .post(uri, obj)
+      .subscribe(res => console.log('Done'));
+  }  
+
 }
