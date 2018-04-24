@@ -8,12 +8,9 @@ import { Title } from '@angular/platform-browser';
 })
 export class AppComponent {
   title = 'CRUD HTTP';
-  public constructor(private titleService: Title){
-
+  constructor(private titleService: Title){
+    this.titleService.setTitle(this.title);
   }
+  //Title is angulars default service imported and it must be default function name <setTitle>
 
-  public setTitle(newTitle: string)
-  {
-    this.titleService.setTitle( newTitle );
-  }
 }

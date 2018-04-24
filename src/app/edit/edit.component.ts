@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-edit',
@@ -6,8 +7,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./edit.component.css']
 })
 export class EditComponent implements OnInit {
-
-  constructor() { }
+  title = "Edit Coin"
+  constructor(private titleService: Title) { this.titleService.setTitle(this.title) }
 
   ngOnInit() {
   }

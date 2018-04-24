@@ -5,3 +5,5 @@
 2. Layouts
 
 3. Routing for rootpath and page not found
+
+4. Set Browser title dynamically using default Title service

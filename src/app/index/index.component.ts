@@ -2,6 +2,7 @@ import { CoinService } from '../coin.service';
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs/Observable';
+import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-index',
@@ -9,10 +10,11 @@ import { Observable } from 'rxjs/Observable';
   styleUrls: ['./index.component.css']
 })
 export class IndexComponent implements OnInit {
-
   coins: any;
 
-  constructor(private http: HttpClient, private service: CoinService) {}
+  constructor(private http: HttpClient, private service: CoinService, private titleService: Title) {
+    this.titleService.setTitle("Index");
+  }
 
   ngOnInit() {
     this.getCoins();
