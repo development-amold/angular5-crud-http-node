@@ -18,6 +18,7 @@ const express = require('express'),
     //   scheme://username:password@host:port/database
     //  Production Heroku URL: mongodb://heroku_ff4kqnxp:5vppf5fkcfsri34i4scnjf26cr@ds157089.mlab.com:57089/heroku_ff4kqnxp'
     // Localhost URL: 'mongodb://localhost:27017/angular5-crud-http-node'
+    // must specify the NODE_ENV variable on heroku config reveals 
 
     // OR---WE CAN WRITE IN THE FOLLOWING WAY USING FUNCTION PROTOTYPE  
     // mongoose.connect(config.DB,function(err, client){

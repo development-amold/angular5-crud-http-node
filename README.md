@@ -11,3 +11,5 @@
 5. Added environment specific config options in angular
 
 6. Added environment specific config module in node(https://www.npmjs.com/package/config)
+
+7. Added Flash messages from npm module

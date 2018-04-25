@@ -7,13 +7,26 @@ var Coin = require('../models/coin');
 // Defined store route
 coinRoutes.route('/add').post(function (req, res) {
   var coin = new Coin(req.body);
-   coin.save()
-    .then(item => {
-    res.status(200).json({'coin': 'Coin added successfully'});
-    })
-    .catch(err => {
-    res.status(400).send("unable to save to database");
-    });
+  //  coin.save()
+  //   .then(item => {
+  //   res.status(200).json({'coin': 'Coin added successfully'});
+  //   })
+  //   .catch(err => {
+  //   res.status(400).json({'coin': err._message});
+  //   });
+
+  // OTHER WAY
+  coin.save(function(err){
+    if(err){
+      // res.status(500);
+      res.json({'coin': err._message})
+      res.end();
+    }
+    else{
+      res.json({'coin': "Coid added successfully!"});
+      res.end();
+    }
+  });
 });
 
 // Defined get data(index or listing) route

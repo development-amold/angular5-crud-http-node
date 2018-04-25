@@ -3,6 +3,8 @@ import { NgModule } from '@angular/core';
 import {HttpClientModule} from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms';
 
+import { FlashMessagesModule } from 'angular2-flash-messages';
+
 import { AppComponent } from './app.component';
 import { IndexComponent } from './index/index.component';
 import { CreateComponent } from './create/create.component';
@@ -29,7 +31,7 @@ import { SiteFooterComponent } from './layouts/site-footer/site-footer.component
     SiteFooterComponent,
   ],
   imports: [
-    BrowserModule, AppRoutingModule,HttpClientModule,ReactiveFormsModule
+    BrowserModule, AppRoutingModule,HttpClientModule,ReactiveFormsModule,FlashMessagesModule.forRoot()
   ],
   providers: [CoinService,Title],
   bootstrap: [AppComponent]

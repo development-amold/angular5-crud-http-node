@@ -25,4 +25,11 @@ export class IndexComponent implements OnInit {
       this.coins = res;
     });
   }
+
+  deleteCoin(id) {
+    this.service.deleteCoin(id).subscribe(res => {
+      console.log('Deleted');
+    });
+  }    
+
 }
