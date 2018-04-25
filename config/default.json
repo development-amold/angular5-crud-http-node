@@ -1,0 +1,9 @@
+{
+    "dbConfig": {
+    "host": "localhost",
+    "port": 27017,
+    "dbName": "angular5-crud-http-node",
+    "username": "root",
+    "password": "root"
+    }
+}

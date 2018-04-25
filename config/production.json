@@ -1,0 +1,9 @@
+{
+    "dbConfig": {
+    "host": "ds157089.mlab.com",
+    "port": 57089,
+    "dbName": "heroku_ff4kqnxp",
+    "username": "heroku_ff4kqnxp",
+    "password": "5vppf5fkcfsri34i4scnjf26cr"    
+    }
+}

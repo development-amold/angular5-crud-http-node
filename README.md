@@ -9,3 +9,5 @@
 4. Set Browser title dynamically using default Title service
 
 5. Added environment specific config options in angular
+
+6. Added environment specific config module in node(https://www.npmjs.com/package/config)

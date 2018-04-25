@@ -3,14 +3,21 @@ const express = require('express'),
     bodyParser = require('body-parser'),
     cors = require('cors'),
     mongoose = require('mongoose'),
-    config = require('./config/db'),
+    config = require('config');
     coinRoutes = require('./expressRoutes/coinRoutes');    
 
+    var dbConfig = config.get('dbConfig');
+    const db_conn_string = `mongodb://${dbConfig.username}:${dbConfig.password}@${dbConfig.host}:${dbConfig.port}/${dbConfig.dbName}`;
+
     mongoose.Promise = global.Promise;
-    mongoose.connect(config.DB).then(
+    mongoose.connect(db_conn_string).then(
         client => {console.log("Connected to database: "+client.connections[0].name) },
         err => { console.log('Can not connect to the database: '+ err)}
-      );
+    );
+
+    //   scheme://username:password@host:port/database
+    //  Production Heroku URL: mongodb://heroku_ff4kqnxp:5vppf5fkcfsri34i4scnjf26cr@ds157089.mlab.com:57089/heroku_ff4kqnxp'
+    // Localhost URL: 'mongodb://localhost:27017/angular5-crud-http-node'
 
     // OR---WE CAN WRITE IN THE FOLLOWING WAY USING FUNCTION PROTOTYPE  
     // mongoose.connect(config.DB,function(err, client){
@@ -38,7 +45,11 @@ const express = require('express'),
     app.use(express.static(distDir));    
 
     app.get("/",function(req,res){
-        res.send("<h4>MY NODE HOMEPAGE</h4>");
+        // res.send("<h4>MY NODE HOMEPAGE</h4>");
+        res.setHeader('Content-disposition', 'inline;');
+        res.setHeader('Content-type', 'text/plain');
+        res.sendFile(__dirname+"/README.md");
     });
+    
     app.use('/coins', coinRoutes);
 
