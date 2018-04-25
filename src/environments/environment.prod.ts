@@ -1,4 +1,4 @@
 export const environment = {
   production: true,
-  api_url: 'http://angular5-crud-http-node.herokuapp.com'
+  api_url: 'https://angular5-crud-http-node.herokuapp.com'
 };
