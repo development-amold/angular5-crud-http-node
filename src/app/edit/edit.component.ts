@@ -38,6 +38,7 @@ export class EditComponent implements OnInit {
   ngOnInit() {
     this.route.params.subscribe(params => {
       this.coin = this.service.editCoin(params['id']).subscribe(res => {
+        console.log(res);
         this.coin = res;
       });
     });    

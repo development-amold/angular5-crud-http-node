@@ -4,7 +4,9 @@ const express = require('express'),
     cors = require('cors'),
     mongoose = require('mongoose'),
     config = require('config');
-    coinRoutes = require('./expressRoutes/coinRoutes');    
+    coinRoutes = require('./expressRoutes/coinRoutes');  
+
+    
 
     var dbConfig = config.get('dbConfig');
     const db_conn_string = `mongodb://${dbConfig.username}:${dbConfig.password}@${dbConfig.host}:${dbConfig.port}/${dbConfig.dbName}`;
@@ -54,3 +56,9 @@ const express = require('express'),
     
     app.use('/coins', coinRoutes);
 
+    app.use(function(req, res, next) {
+        console.log("TEST")
+        var err = new Error('Not Found');
+        err.status = 404;
+        next(err);
+    });    

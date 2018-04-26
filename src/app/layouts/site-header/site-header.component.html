@@ -1,11 +1,18 @@
 <nav class="navbar navbar-default" role="navigation">
   <div class="container-fluid">
     <ul class="nav navbar-nav">
-      <li class="active">
-        <a routerLink="/index" routerLinkActive="active">
-          Coins
-        </a>
-      </li>    
+      <div class="col-sm-12">
+        <a *ngIf="isShowAddButton; else elseBlock" routerLink="/create" class="btn btn-primary">Add Coin</a>
+        <a *ngIf="isShowGoBack" (click)="goback()" class="btn btn-info">Back</a>
+        <a *ngIf="isShowHome" routerLink="/" class="btn btn-info">Home</a>
+      </div>  
+      <ng-template #elseBlock>
+          <li class="active">
+            <a routerLink="/index" routerLinkActive="active">
+              Coins List
+            </a>
+          </li>     
+        </ng-template>    
     </ul>
   </div>
 </nav>

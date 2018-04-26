@@ -1,3 +1,4 @@
+var expressListRoutes   = require('express-list-routes');
 var express = require('express');
 var app = express();
 var coinRoutes = express.Router();
@@ -75,5 +76,11 @@ coinRoutes.route('/delete/:id').get(function (req, res) {
         else res.json('Successfully removed');
     });
 });
+
+
+
+// console.log(expressListRoutes( coinRoutes )) 
+// It lists out the routes 
+
 
 module.exports = coinRoutes;

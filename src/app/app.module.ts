@@ -16,6 +16,7 @@ import { HomeComponent } from './home/home.component';
 import { SiteLayoutComponent } from './layouts/site-layout/site-layout.component';
 import { SiteHeaderComponent } from './layouts/site-header/site-header.component';
 import { SiteFooterComponent } from './layouts/site-footer/site-footer.component';
+import { ButtonService } from './button.service';
 
 
 @NgModule({
@@ -33,7 +34,7 @@ import { SiteFooterComponent } from './layouts/site-footer/site-footer.component
   imports: [
     BrowserModule, AppRoutingModule,HttpClientModule,ReactiveFormsModule,FlashMessagesModule.forRoot()
   ],
-  providers: [CoinService,Title],
+  providers: [CoinService,Title,ButtonService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

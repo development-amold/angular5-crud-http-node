@@ -12,7 +12,6 @@
           <td>{{ coin.name }}</td>
           <td>{{ coin.price }}</td>
           <td>
-            <a routerLink="/create" class="btn btn-primary">Add</a>|
             <a [routerLink]="['/edit', coin._id]" class="btn btn-primary">Edit</a>|
             <button (click)="deleteCoin(coin._id)" class="btn btn-danger">Delete</button>
            </td>

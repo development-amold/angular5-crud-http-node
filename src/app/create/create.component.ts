@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup,  FormBuilder,  Validators } from '@angular/forms';
 import { Title } from '@angular/platform-browser';
-
 import { CoinService } from '../coin.service';
+import { ButtonService } from '../button.service';
 
 @Component({
   selector: 'app-create',
@@ -13,9 +13,12 @@ import { CoinService } from '../coin.service';
 export class CreateComponent implements OnInit {
   title = "New Coin";
   angForm: FormGroup;
-  constructor(private coinservice: CoinService, private fb: FormBuilder,private titleService: Title) {
+  constructor(private coinservice: CoinService, private fb: FormBuilder,private titleService: Title, private _buttonService: ButtonService) {
     this.createForm();
-    this.titleService.setTitle(this.title);
+    titleService.setTitle(this.title);
+    _buttonService.changeButton(true);
+    _buttonService.changeGoBack(true);
+    _buttonService.changeHome(true);
     //Title is angulars default service imported and it must be default function name <setTitle>
    }
   createForm() {

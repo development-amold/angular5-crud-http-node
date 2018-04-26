@@ -3,10 +3,13 @@ import { HttpClient } from '@angular/common/http';
 import { FormGroup,  FormBuilder,  Validators } from '@angular/forms';
 import { environment } from '../environments/environment';
 import { Router } from '@angular/router';
-
 import { Observable } from 'rxjs/Observable';
+import { of } from 'rxjs/observable/of';
+
 import 'rxjs/add/operator/map';
 import { FlashMessagesService } from 'angular2-flash-messages';
+import { Coin } from './coin';
+
 
 @Injectable()
 export class CoinService {
@@ -21,10 +24,21 @@ export class CoinService {
       price: price
     };
     this.http.post(uri, obj).subscribe(res => {
-      this.flashMessageService.show(res.coin, { cssClass: 'alert-success', timeout: 2000 })
+      this.flashMessageService.show(res["coin"], { cssClass: 'alert-success', timeout: 2000 })
+      this._router.navigate(["index"]);
     });
-    this._router.navigate(["index"]);
+    
   }
+
+  //  OR OTHER WAY OF ADDING USING OBSERVABLES
+  // addCoin(coin: Coin):Observable<Coin> {
+  //   const uri = this.api_uri + '/coins/add';
+  //   this.http.post(uri, coin).subscribe(res => {
+  //     this.flashMessageService.show(res["coin"], { cssClass: 'alert-success', timeout: 2000 })
+  //   });
+  //   this._router.navigate(["index"]);    
+  //   return of(coin)
+  // }  
 
   getCoins() {
     const uri = this.api_uri + '/coins';
