@@ -11,14 +11,14 @@ import { SiteLayoutComponent } from './layouts/site-layout/site-layout.component
 export const appRoutes: Routes = [
   {
     path: '', component: SiteLayoutComponent,
-    children:[
+    children:[ // relative parent path
       { path: '', component: HomeComponent}, //---root path---
       { path: 'home', component: HomeComponent },
       { path: 'create', component: CreateComponent },
       { path: 'edit/:id',component: EditComponent  },
       { path: 'index', component: IndexComponent },
       // { path: '**', component: PageNotFoundComponent},
-      { path: '**', redirectTo: "",pathMatch: "full"}, //--redirect to root path if invalid path found
+      { path: '**', redirectTo: "",pathMatch: "full"}, //--redirect to root path if invalid path found , This wildCard route always be at last
    ]
   }
 ];

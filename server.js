@@ -57,8 +57,7 @@ const express = require('express'),
     app.use('/coins', coinRoutes);
 
     app.use(function(req, res, next) {
-        console.log("TEST")
-        var err = new Error('Not Found');
+        var err = new Error('Route Not Found');
         err.status = 404;
         next(err);
     });    

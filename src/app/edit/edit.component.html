@@ -1,7 +1,4 @@
 <div class="panel panel-primary">
-  <div class="panel-heading">
-    {{ title }}
-  </div>
   <div class="panel-body">
     <form [formGroup]="angForm" novalidate>
       <div class="form-group">
@@ -23,7 +20,7 @@
         </div>
       </div>
         <div class="form-group">
-          <button (click)="updateCoin(name.value, price.value)" [disabled]="angForm.pristine || angForm.invalid" class="btn btn-primary">Update</button>
+          <button (click)="updateCoin()" [disabled]="angForm.pristine || angForm.invalid" class="btn btn-primary">Update</button>
         </div>
     </form>
   </div>

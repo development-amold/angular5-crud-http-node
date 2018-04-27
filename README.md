@@ -17,3 +17,5 @@
 8. Added Button service for show/hide w.r.t. condition. Set value from Index & get it in to SiteHeaderComponent
 
 9. Added NPM express-list-routes for listing the routes in human redable format
+
+10. HTTP Server errors are handled

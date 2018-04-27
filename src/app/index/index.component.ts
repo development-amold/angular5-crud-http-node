@@ -5,6 +5,7 @@ import { Observable } from 'rxjs/Observable';
 import { Title } from '@angular/platform-browser';
 import { Location } from '@angular/common';
 import { ButtonService } from '../button.service';
+import { FlashMessagesService } from 'angular2-flash-messages';
 
 
 @Component({
@@ -14,8 +15,9 @@ import { ButtonService } from '../button.service';
 })
 export class IndexComponent implements OnInit {
   coins: any;
+  errorMsg: any;
 
-  constructor(private location: Location, private http: HttpClient, private service: CoinService, private titleService: Title, private _buttonService: ButtonService)  { 
+  constructor(private location: Location, private http: HttpClient, private _service: CoinService, private titleService: Title, private _buttonService: ButtonService, private _flashMessageService: FlashMessagesService)  { 
     this.titleService.setTitle("Index");
     this._buttonService.changeButton(true);
     _buttonService.changeGoBack(true);
@@ -27,17 +29,19 @@ export class IndexComponent implements OnInit {
   }
 
   getCoins() {
-    console.log("INSEXS COMIN")
-    this.service.getCoins().subscribe(res => {
+    this._service.getCoins().subscribe(res => {
       this.coins = res;
-      console.log(this.coins);
     });
   }
 
-  deleteCoin(id) {
-    this.service.deleteCoin(id).subscribe(res => {
-      console.log('Deleted');
+  deleteCoin(id): void {
+    this._service.deleteCoin(id).subscribe(res => {
+      this.coins = this.getCoins();
+      this._flashMessageService.show(res["coin"], { cssClass: 'alert-success', timeout: 3000 });
+    },error => {
+      this._flashMessageService.show(error.message || "Internal Server Error", { cssClass: 'alert-danger', timeout: 3000 });
     });
+
   }    
 
 }

@@ -3,6 +3,9 @@ import { FormGroup,  FormBuilder,  Validators } from '@angular/forms';
 import { Title } from '@angular/platform-browser';
 import { CoinService } from '../coin.service';
 import { ButtonService } from '../button.service';
+import { Coin } from '../coin';
+import { Router } from '@angular/router';
+import { FlashMessagesService } from 'angular2-flash-messages';
 
 @Component({
   selector: 'app-create',
@@ -13,7 +16,7 @@ import { ButtonService } from '../button.service';
 export class CreateComponent implements OnInit {
   title = "New Coin";
   angForm: FormGroup;
-  constructor(private coinservice: CoinService, private fb: FormBuilder,private titleService: Title, private _buttonService: ButtonService) {
+  constructor(private coinservice: CoinService, private fb: FormBuilder,private titleService: Title, private _buttonService: ButtonService, private _router: Router, private _flashMessageService: FlashMessagesService) {
     this.createForm();
     titleService.setTitle(this.title);
     _buttonService.changeButton(true);
@@ -27,8 +30,11 @@ export class CreateComponent implements OnInit {
       price: ['', Validators.required ]
    });
   }
-  addCoin(name, price) {
-    this.coinservice.addCoin(name, price);
+  addCoin(name: string, price: number):void {
+    this.coinservice.addCoin({name, price} as Coin).subscribe(res => {
+      this._flashMessageService.show(res["coin"], { cssClass: 'alert-danger', timeout: 3000 });
+      this._router.navigate(["/index"]);
+    });
   }  
   
   ngOnInit() {
