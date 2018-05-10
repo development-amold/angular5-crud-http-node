@@ -43,10 +43,6 @@ const express = require('express'),
     console.log('Listening on port ' + port);
     });
 
-    // Create link to Angular build directory
-    var distDir = __dirname + "/dist/index.html";
-    app.use(express.static(distDir));    
-
     app.get("/",function(req,res){
         // res.send("<h4>MY NODE HOMEPAGE</h4>");
         res.setHeader('Content-disposition', 'inline;');
@@ -61,3 +57,12 @@ const express = require('express'),
         err.status = 404;
         next(err);
     });    
+
+    // Create link to Angular build directory
+    app.get('*', function(req,res) {
+        res.sendFile(path.join(__dirname, '/dist/index.html'));
+      });
+
+    // var distDir = __dirname + "/dist";
+    // app.use(express.static(distDir));    
+    
