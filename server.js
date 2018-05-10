@@ -59,10 +59,10 @@ const express = require('express'),
     });    
 
     // Create link to Angular build directory
-    app.get('*', function(req,res) {
-        res.sendFile(path.join(__dirname, '/dist/index.html'));
-      });
+    // app.get('*', function(req,res) {
+    //     res.sendFile(path.join(__dirname, '/dist/index.html'));
+    //   });
 
-    // var distDir = __dirname + "/dist";
-    // app.use(express.static(distDir));    
+    var distDir = __dirname + "/dist";
+    app.use(express.static(distDir));    
     
