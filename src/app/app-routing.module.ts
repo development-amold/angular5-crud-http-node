@@ -17,8 +17,8 @@ export const appRoutes: Routes = [
       { path: 'create', component: CreateComponent },
       { path: 'edit/:id',component: EditComponent  },
       { path: 'index', component: IndexComponent },
-      // { path: '**', component: PageNotFoundComponent},
-      { path: '**', redirectTo: "",pathMatch: "full"}, //--redirect to root path if invalid path found , This wildCard route always be at last
+      { path: '**', component: PageNotFoundComponent},
+      // { path: '**', redirectTo: "",pathMatch: "full"}, //--redirect to root path if invalid path found , This wildCard route always be at last
    ]
   }
 ];
