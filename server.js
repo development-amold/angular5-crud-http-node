@@ -38,6 +38,15 @@ const express = require('express'),
     app.use(bodyParser.json());
     app.use(cors());    
     
+
+    // Create link routes to Angular build directory for serving angular app
+    var distDir = __dirname + "/dist";
+    app.use(express.static(distDir));    
+    
+    app.get('/*', function(req,res) {
+        res.sendFile(path.join(__dirname+'/dist/index.html'));
+    });
+
     const port = process.env.PORT || 4000;
     const server = app.listen(port,function(){
     console.log('Listening on port ' + port);
@@ -57,12 +66,3 @@ const express = require('express'),
         err.status = 404;
         next(err);
     });    
-
-    // Create link to Angular build directory
-    // app.get('*', function(req,res) {
-    //     res.sendFile(path.join(__dirname, '/dist/index.html'));
-    //   });
-
-    var distDir = __dirname + "/dist";
-    app.use(express.static(distDir));    
-    
