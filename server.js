@@ -44,7 +44,7 @@ const express = require('express'),
     });
 
     // Create link to Angular build directory
-    var distDir = __dirname + "/dist/";
+    var distDir = __dirname + "/dist/index.html";
     app.use(express.static(distDir));    
 
     app.get("/",function(req,res){
